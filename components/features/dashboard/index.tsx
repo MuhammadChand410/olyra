@@ -725,7 +725,7 @@ export default function DashboardView() {
                     </div>
                 </div>
 
-                <div className="p-4 bg-[#F5F5F5] rounded-xl border border-[#E9EAEB] mb-6">
+                <div className="bp-4 bg-[#F5F5F5] rounded-xl border border-[#E9EAEB] mb-6">
                     <div className="mb-4">
                         <TitlePara title="Did You Know?" description="Additional clinical context related to your laboratory results." />
                     </div>
