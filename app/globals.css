@@ -1,8 +1,5 @@
 @import "tailwindcss";
 
-/* @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@200..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap'); */
-
 body {
   background: var(--background);
   color: var(--foreground);
@@ -10,9 +7,38 @@ body {
 }
 
 .container {
+  width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 16px;
 }
 
+@media (min-width: 640px) {
+  .container {
+    padding: 0 20px;
+  }
+}
 
+@media (min-width: 768px) {
+  .container {
+    padding: 0 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 32px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    padding: 0 40px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    padding: 0 48px;
+  }
+}

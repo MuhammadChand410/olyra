@@ -140,8 +140,8 @@ export default function ProfileView() {
                     </div>
                 )}
 
-                <div className="bg-white rounded-xl border border-[#E9EAEB] p-4 mb-4 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
+                <div className="bg-white rounded-xl border border-[#E9EAEB] p-4 mb-4 flex md:flex-row flex-col items-center justify-between">
+                    <div className="flex md:flex-row flex-col items-center gap-3">
                         <div className="p-2 rounded-full bg-[#E5E7D4] flex items-center justify-center flex-shrink-0">
                             <HealthhIcon />
                         </div>
@@ -207,8 +207,8 @@ export default function ProfileView() {
                     </div>
                 )}
 
-                <div className="bg-white rounded-xl border border-[#E9EAEB] p-4 mb-4 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
+                <div className="bg-white rounded-xl border border-[#E9EAEB] p-4 mb-4 flex md:flex-row flex-col items-center justify-between">
+                    <div className="flex md:flex-row flex-col items-center gap-3">
                         <div className="p-2 rounded-full bg-[#E5E7D4] flex items-center justify-center flex-shrink-0">
                             <UploaddIcon />
                         </div>
