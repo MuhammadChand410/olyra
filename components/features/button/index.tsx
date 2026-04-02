@@ -50,14 +50,14 @@ export default function ButtonView() {
     const progress = Math.round(((currentStep + 1) / STEPS.length) * 100);
 
     return (
-        <section className="min-h-screen bg-[#F9F9F9] py-6 px-6">
+        <section className="min-h-screen bg-[#F9F9F9] px-0 py-6 md:px-6">
             <div className="container max-w-3xl mb-6">
                 <div className="mb-6">
                     <div className="flex items-center gap-2.5 mb-1">
-                        <Link href="/enterprise" className="text-[#535862] -ml-9 hover:text-[#181D27]">
+                        <Link href="/enterprise" className="text-[#535862] ml-0 md:-ml-9 hover:text-[#181D27]">
                             <BackArrowIcon />
                         </Link>
-                        <h1 className="font-serif font-normal text-4xl text-[#181D27]">NOM-035 Questionnaire</h1>
+                        <h1 className="font-serif font-normal text-2xl md:text-4xl text-[#181D27]">NOM-035 Questionnaire</h1>
                     </div>
 
                     <p className="text-xs text-[#535862]">This questionnaire is mandatory for all personnel and is organized and will work in accordance with NOM-035-STPS-2018</p>
@@ -80,7 +80,7 @@ export default function ButtonView() {
 
                     <div className="flex items-start justify-between mb-8 overflow-x-auto gap-2">
                         {STEPS.map((step, i) => (
-                            <div key={i} className="flex flex-col items-center gap-2 min-w-[80px]">
+                            <div key={i} className="flex flex-col items-center gap-2 min-w-20">
                                 <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium border-2 transition ${i < currentStep ? 'bg-[#BE735B] border-[#BE735B] text-white' :
                                     i === currentStep ? 'border-[#BE735B] text-[#BE735B] bg-white' :
                                         'border-gray-200 text-gray-400 bg-white'

@@ -34,7 +34,7 @@ export default function Header() {
 
                     <ul className="flex items-center gap-3 ml-auto">
                         <li className="relative">
-                            <button onClick={() => setServicesOpen(!servicesOpen)} className="bg-[#F5F5F5] cursor-pointer rounded-[80px] p-2">
+                            <button onClick={() => setServicesOpen(!servicesOpen)} aria-label="Open options" className="bg-[#F5F5F5] cursor-pointer rounded-[80px] p-2">
                                 <FrameIcon />
                             </button>
                             {servicesOpen && (
@@ -46,7 +46,7 @@ export default function Header() {
                             )}
                         </li>
                         <li className="relative">
-                            <button onClick={() => setProfileOpen(!profileOpen)} className="bg-[#F5F5F5] cursor-pointer rounded-[80px] p-2.5">
+                            <button onClick={() => setProfileOpen(!profileOpen)} className="bg-[#F5F5F5] cursor-pointer rounded-[80px] p-2.5" aria-label="User profile">
                                 <SubscribeIcon />
                             </button>
                             {profileOpen && (
@@ -58,9 +58,9 @@ export default function Header() {
                                 </div>
                             )}
                         </li>
-                        <div className="cursor-pointer">
+                        <button aria-label="User profile" className="cursor-pointer">
                             <img src={avatar.src} alt="avatar" width={40} height={40} className="rounded-full" />
-                        </div>
+                        </button>
                     </ul>
                 </nav>
             </div>

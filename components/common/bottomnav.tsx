@@ -33,7 +33,7 @@ export default function BottomNav() {
                             <li key={link.id}>
                                 <Link href={link.path} className="flex flex-col items-center gap-1 p-3">
                                     <link.icon isActive={isActive} />
-                                    <span className={`text-[10px] font-normal ${isActive ? 'text-[#BE735B]' : 'text-[#9DB2CE]'}`}>
+                                    <span className={`text-xs font-normal ${isActive ? 'text-[#BE735B]' : 'text-[#9DB2CE]'}`}>
                                         {link.text}
                                     </span>
                                 </Link>

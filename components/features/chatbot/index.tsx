@@ -286,7 +286,7 @@ export default function ChatbotView() {
 
                                     <div className="max-w-[60%]">
                                         {msg.type === 'audio' && (
-                                            <div className="bg-[#ADB37D] rounded-2xl px-4 py-3 flex items-center gap-3 min-w-[200px]">
+                                            <div className="bg-[#ADB37D] rounded-2xl px-4 py-3 flex items-center gap-3 min-w-50">
                                                 <button onClick={() => togglePlay(msg)} className="w-7 h-7 bg-white/30 rounded-full flex items-center justify-center flex-shrink-0">
                                                     {playingId === msg.id ? (
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="white" viewBox="0 0 24 24">

@@ -5,8 +5,8 @@ import type React from "react";
 import BiomarkerChart from "./echart";
 
 const STATUS_COLORS: Record<string, { bg: string; text: string }> = {
-    Optimal: { bg: "bg-[#1CA34E]", text: "text-[#FFF]" },
-    Normal: { bg: "bg-[#D39D00]", text: "text-[#FFF]" },
+    Optimal: { bg: "bg-green-700", text: "text-[#FFF]" },
+    Normal: { bg: "bg-yellow-600", text: "text-[#FFF]" },
     High: { bg: "bg-[#D12A2A]", text: "text-[#FFF]" },
     Low: { bg: "bg-[#FEE2E2]", text: "text-[#991B1B]" },
 };

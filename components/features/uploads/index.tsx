@@ -143,10 +143,10 @@ ${[...LAB_PAGES[0], ...LAB_PAGES[1]].map(l => `${l.name}: ${l.value}`).join('\n'
     const getLabPage = (id: number) => labPage[id] ?? 0;
 
     return (
-        <section className="p-6">
+        <section className="px-0 py-6 md:px-6">
             <div className="container">
                 <div className="flex items-center gap-2.5 mb-1">
-                    <Link href="/profile" className="text-[#535862] -ml-9 hover:text-[#181D27]">
+                    <Link href="/profile" className="text-[#535862] ml-0 md:-ml-9 hover:text-[#181D27]">
                         <BackArrowIcon />
                     </Link>
                     <h1 className="font-serif font-normal text-4xl text-[#181D27]">My Uploads</h1>

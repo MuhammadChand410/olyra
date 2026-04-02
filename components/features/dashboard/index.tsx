@@ -14,7 +14,7 @@ const CARDS = [
     { id: 1, title: "White Blood Cells (WBC)", status: "Optimal", value: "5.2", unit: "k/uL", category: "Blood health", desc: "White blood cells are part of the immune system and help fight infections.", normal: "4.5 – 11.0 k/uL", trend: [90, 75, 60, 55, 65, 50, 45], dates: ["Nov 2025", "Nov 2025", "Dec 2025", "Dec 2025", "Jan 2026", "Jan 2026", "Jan 2026"] },
     { id: 2, title: "LDL Cholesterol", status: "Normal", value: "142", unit: "mg/dL", category: "Heart", desc: "LDL cholesterol is known as 'bad' cholesterol. High levels can increase risk of heart disease.", normal: "< 100 mg/dL optimal", trend: [85, 70, 60, 65, 58, 62, 55], dates: ["Nov 2025", "Nov 2025", "Dec 2025", "Dec 2025", "Jan 2026", "Jan 2026", "Jan 2026"] },
     { id: 3, title: "Platelet Count (PLT)", status: "High", value: "285", unit: "k/uL", category: "Blood health", desc: "Platelets help your blood clot. High or low counts can indicate various conditions.", normal: "150 – 400 k/uL", trend: [95, 88, 75, 80, 70, 65, 50], dates: ["Nov 2025", "Nov 2025", "Dec 2025", "Dec 2025", "Jan 2026", "Jan 2026", "Jan 2026"] },
-   ];
+];
 export default function DashboardView() {
     const [selectedCard, setSelectedCard] = useState<number | null>(null);
     const [copySuccess, setCopySuccess] = useState(false);
@@ -209,8 +209,8 @@ export default function DashboardView() {
     });
 
     const STATUS_COLORS: Record<string, { bg: string; text: string }> = {
-        Optimal: { bg: "bg-[#1CA34E]", text: "text-[#FFF]" },
-        Normal: { bg: "bg-[#D39D00]", text: "text-[#FFF]" },
+        Optimal: { bg: "bg-green-700", text: "text-[#FFF]" },
+        Normal: { bg: "bg-yellow-600", text: "text-[#FFF]" },
         High: { bg: "bg-[#D12A2A]", text: "text-[#FFF]" },
         Low: { bg: "bg-[#FEE2E2]", text: "text-[#991B1B]" },
     };
@@ -330,8 +330,8 @@ export default function DashboardView() {
                                     </div>
 
                                     <div className="flex justify-between mt-3 text-gray-500 text-sm">
-                                        <span className="text-xs text-[#8C8C96] font-normal">Low</span>
-                                        <span className="text-xs text-[#8C8C96] font-normal">Optimal</span>
+                                        <span className="text-xs text-gray-600 font-normal">Low</span>
+                                        <span className="text-xs text-gray-600 font-normal">Optimal</span>
                                     </div>
                                 </div>
                                 <div onClick={() => setSelectedCard(2)} className="p-6 rounded-lg bg-white border border-[#E9EAEB] cursor-pointer hover:shadow-lg transition">
@@ -342,6 +342,7 @@ export default function DashboardView() {
                                                 e.stopPropagation();
                                                 handleShare();
                                             }}
+                                            aria-label="Submit form"
                                             className="p-3 bg-[#4F512D] rounded-md cursor-pointer hover:bg-[#3F4125] transition"
                                         >
                                             <ShareIcon />
@@ -365,8 +366,8 @@ export default function DashboardView() {
                                     </div>
 
                                     <div className="flex justify-between mt-3 text-gray-500 text-sm">
-                                        <span className="text-xs text-[#8C8C96] font-normal">Younger</span>
-                                        <span className="text-xs text-[#8C8C96] font-normal">Older</span>
+                                        <span className="text-xs text-gray-600 font-normal">Younger</span>
+                                        <span className="text-xs text-gray-600 font-normal">Older</span>
                                     </div>
                                 </div>
                                 <div onClick={() => setSelectedCard(3)} className="p-6 rounded-lg bg-white border border-[#E9EAEB] cursor-pointer hover:shadow-lg transition">
@@ -402,147 +403,149 @@ export default function DashboardView() {
 
                         {selectedCard && (
                             <div className="fixed inset-0 bg-black/50 flex items-center px-4 justify-center z-50" onClick={() => setSelectedCard(null)}>
-                                <div className="bg-white rounded-lg border border-[#E4E4E7] p-6 md:max-h-[100vh] max-h-[50vh] overflow-y-auto max-w-187 w-full" onClick={(e) => e.stopPropagation()}>
-                                    <div className="flex items-start justify-between mb-4">
+                                <div className=" max-w-187 bg-white py-6 w-full rounded-lg border border-[#E4E4E7]">
+                                    <div className="flex items-start px-6 bg-white sticky top-0 justify-between">
                                         <div>
                                             <h2 className="text-xl text-[#1E1E23] font-normal font-serif mb-1.5">{selectedCard === 1 ? 'Health Score' : selectedCard === 2 ? 'Biological Age' : 'Health Snapshot'}</h2>
                                             <p className="text-sm text-[#5F5F69] font-normal">{selectedCard === 1 ? 'Based on your recent biomarkers & health data' : selectedCard === 2 ? 'This provides an indicator of how your body is aging.' : 'Biomarker status Overview'}</p>
                                         </div>
                                         <button onClick={() => setSelectedCard(null)} className="text-gray-500 hover:text-gray-700 text-2xl cursor-pointer">&times;</button>
                                     </div>
-                                    <div className="">
-                                        {selectedCard === 1 && (
-                                            <div>
-                                                <h3 className="font-serif font-normal text-[#252613] text-6xl mb-3">57</h3>
-                                                <p className="text-[#1E1E23] text-lg font-medium mb-2">Health score</p>
-                                                <div className="flex items-center gap-2 mt-8">
+                                    <div className="md:max-h-[70vh] bg-white max-h-[50vh] overflow-y-auto px-6 " onClick={(e) => e.stopPropagation()}>
+                                        <div className="">
+                                            {selectedCard === 1 && (
+                                                <div>
+                                                    <h3 className="font-serif font-normal text-[#252613] text-6xl mb-3">57</h3>
+                                                    <p className="text-[#1E1E23] text-lg font-medium mb-2">Health score</p>
+                                                    <div className="flex items-center gap-2 mt-8">
 
-                                                    <div className="flex-1 h-3 rounded-l-full bg-gradient-to-r from-[#D26464] to-[#E5E7EB]"></div>
+                                                        <div className="flex-1 h-3 rounded-l-full bg-gradient-to-r from-[#D26464] to-[#E5E7EB]"></div>
 
-                                                    <div className="w-[2px] h-6 bg-[#1E1E23]"></div>
+                                                        <div className="w-[2px] h-6 bg-[#1E1E23]"></div>
 
-                                                    <div className="flex-1 h-3 rounded-r-full bg-gradient-to-r from-[#E5E7EB] to-[#86BF9B]"></div>
+                                                        <div className="flex-1 h-3 rounded-r-full bg-gradient-to-r from-[#E5E7EB] to-[#86BF9B]"></div>
 
-                                                </div>
-
-                                                <div className="flex justify-between mt-3 text-gray-500 text-sm border-b border-[#E3E3E3] pb-6">
-                                                    <span className="text-xs text-[#8C8C96] font-normal">Low</span>
-                                                    <span className="text-xs text-[#8C8C96] font-normal">Optimal</span>
-                                                </div>
-                                                <p className="mt-6 text-sm font-normal text-[#5F5F69]">Your Health Score is calculated based on your biomarkers. The more biomarkers you get tested, and the more are in optimal ranges, the higher your score will be. Keep tracking your health to improve your score!</p>
-                                            </div>
-                                        )}
-                                        {selectedCard === 2 && (
-                                            <div>
-                                                <h3 className="font-serif font-normal text-[#252613] text-6xl mb-3">49</h3>
-                                                <p className="text-[#1E1E23] text-lg font-medium mb-2">Biological Age</p>
-
-                                                <div className="flex items-center gap-2 mt-6">
-
-                                                    <div className="flex w-21 h-3 rounded-l-full bg-gradient-to-r from-[#86BF9B] to-[#E5E7EB]"></div>
-
-                                                    <div className="w-[2px] h-6 bg-[#1E1E23]"></div>
-
-                                                    <div className="flex-1 w-48 h-3 rounded-r-full bg-gradient-to-r from-[#E5E7EB] to-[#D26464]"></div>
-
-                                                </div>
-                                                <div className="flex justify-between mt-3 text-gray-500 text-sm border-b border-[#E3E3E3] pb-6">
-                                                    <span className="text-xs text-[#8C8C96] font-normal">Low</span>
-                                                    <span className="text-xs text-[#8C8C96] font-normal">Optimal</span>
-                                                </div>
-                                                <p className="mt-6 text-sm font-normal text-[#5F5F69] mb-6">Your Biological Age is estimated using an algorithm that predicts biological age based on circulating blood biomarkers. This provides an indicator of how your body is aging compared to your calendar age.</p>
-                                                <p className="border border-[#E5E7EB] rounded-xl p-3 text-sm font-normal text-[#5f5f69]/80 mb-6">Bortz, Jordan, Andrea Guariglia, Lucija Klaric, David Tang, Peter Ward, Michael Geer, Marc Chadeau-Hyam, Dragana Vuckovic, and Peter K. Joshi. "Biological age estimation using circulating blood biomarkers." Communications Biology 6, no. 1 (2023): 1089.</p>
-                                                <div className="flex items-center gap-2 justify-end relative">
-                                                    <Button onClick={handleSharee} text="Share" icon={<ShareIcon />} className="bg-[#BE735B] hover:bg-[#A86550] px-3 py-2.5" />
-                                                    <Button onClick={handleCopy} text="" icon={<CopyIcon />} className=" bg-white !border !border-[#A86550] px-3 py-2.5" />
-                                                    {copySuccess && (
-                                                        <span className="absolute -top-8 right-0 bg-green-600 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
-                                                            Copied!
-                                                        </span>
-                                                    )}
-                                                </div>
-
-                                            </div>
-                                        )}
-                                        {selectedCard === 3 && (
-                                            <div>
-                                                <div className="w-full h-5 flex rounded-full overflow-hidden mb-4">
-                                                    <div className="bg-[#1CA34E] w-[35%]"></div>
-                                                    <div className="bg-[#D39D00] w-[25%]"></div>
-                                                    <div className="bg-[#D12A2A] w-[20%]"></div>
-                                                    <div className="bg-[#777B8B] w-[20%]"></div>
-                                                </div>
-
-                                                <div className="flex items-center justify-between gap-8 mb-6">
-                                                    <div className="flex items-center justify-between gap-8">
-                                                        <div className="flex items-center text-sm font-normal text-[#5F5F69] gap-2">
-                                                            <span className="w-3 h-3 bg-[#1CA34E]  rounded-sm"></span>
-                                                            Optimal
-                                                        </div>
-                                                        <span className="text-base text-[#1E1E23] font-medium">18</span>
                                                     </div>
-                                                    <div className="flex items-center justify-between gap-8">
-                                                        <div className="flex items-center text-sm font-normal text-[#5F5F69] gap-2">
-                                                            <span className="w-3 h-3 bg-[#D39D00] rounded-sm"></span>
-                                                            Normal
-                                                        </div>
-                                                        <span className="text-base text-[#1E1E23] font-medium">12</span>
+
+                                                    <div className="flex justify-between mt-3 text-gray-500 text-sm border-b border-[#E3E3E3] pb-6">
+                                                        <span className="text-xs text-gray-600 font-normal">Low</span>
+                                                        <span className="text-xs text-gray-600 font-normal">Optimal</span>
                                                     </div>
-                                                    <div className="flex items-center justify-between gap-8">
-                                                        <div className="flex items-center text-sm font-normal text-[#5F5F69] gap-2">
-                                                            <span className="w-3 h-3 bg-[#D12A2A] rounded-sm"></span>
-                                                            Out of Range
-                                                        </div>
-                                                        <span className="text-base text-[#1E1E23] font-medium">5</span>
-                                                    </div>
-                                                    <div className="flex items-center justify-between gap-8">
-                                                        <div className="flex items-center text-sm font-normal text-[#5F5F69] gap-2">
-                                                            <span className="w-3 h-3 bg-[#777B8B] rounded-sm"></span>
-                                                            Missing
-                                                        </div>
-                                                        <span className="text-base text-[#1E1E23] font-medium">3</span>
-                                                    </div>
+                                                    <p className="mt-6 text-sm font-normal text-[#5F5F69]">Your Health Score is calculated based on your biomarkers. The more biomarkers you get tested, and the more are in optimal ranges, the higher your score will be. Keep tracking your health to improve your score!</p>
                                                 </div>
+                                            )}
+                                            {selectedCard === 2 && (
+                                                <div>
+                                                    <h3 className="font-serif font-normal text-[#252613] text-6xl mb-3">49</h3>
+                                                    <p className="text-[#1E1E23] text-lg font-medium mb-2">Biological Age</p>
 
-                                                <hr className="border-b border-[#E3E3E3] mb-5" />
+                                                    <div className="flex items-center gap-2 mt-6">
 
-                                                <h3 className="text-sm font-semibold text-[#1E1E23] mb-4">
-                                                    Category Overview
-                                                </h3>
+                                                        <div className="flex w-21 h-3 rounded-l-full bg-gradient-to-r from-[#86BF9B] to-[#E5E7EB]"></div>
 
-                                                <div className="grid grid-cols-2 gap-5">
+                                                        <div className="w-[2px] h-6 bg-[#1E1E23]"></div>
 
-                                                    {[
-                                                        { name: "Heart", score: "0/10" },
-                                                        { name: "Blood Health", score: "5/10" },
-                                                        { name: "Kidney Health", score: "0/8" },
-                                                        { name: "Hormonal Health", score: "0/10" },
-                                                        { name: "Metabolic Health", score: "0/5" },
-                                                        { name: "Nutrients", score: "0/6" },
-                                                        { name: "Inflammation", score: "1/5" },
-                                                        { name: "Liver Health", score: "0/9" },
-                                                        { name: "Cancer Screening", score: "0/2" },
-                                                    ].map((item, i) => (
+                                                        <div className="flex-1 w-48 h-3 rounded-r-full bg-gradient-to-r from-[#E5E7EB] to-[#D26464]"></div>
 
-                                                        <div key={i}>
+                                                    </div>
+                                                    <div className="flex justify-between mt-3 text-gray-500 text-sm border-b border-[#E3E3E3] pb-6">
+                                                        <span className="text-xs text-gray-600 font-normal">Low</span>
+                                                        <span className="text-xs text-gray-600 font-normal">Optimal</span>
+                                                    </div>
+                                                    <p className="mt-6 text-sm font-normal text-[#5F5F69] mb-6">Your Biological Age is estimated using an algorithm that predicts biological age based on circulating blood biomarkers. This provides an indicator of how your body is aging compared to your calendar age.</p>
+                                                    <p className="border border-[#E5E7EB] rounded-xl p-3 text-sm font-normal text-[#5f5f69]/80 mb-6">Bortz, Jordan, Andrea Guariglia, Lucija Klaric, David Tang, Peter Ward, Michael Geer, Marc Chadeau-Hyam, Dragana Vuckovic, and Peter K. Joshi. "Biological age estimation using circulating blood biomarkers." Communications Biology 6, no. 1 (2023): 1089.</p>
+                                                    <div className="flex items-center gap-2 justify-end relative">
+                                                        <Button onClick={handleSharee} text="Share" icon={<ShareIcon />} className="bg-[#BE735B] hover:bg-[#A86550] px-3 py-2.5" />
+                                                        <Button onClick={handleCopy} text="" icon={<CopyIcon />} className=" bg-white !border !border-[#A86550] px-3 py-2.5" />
+                                                        {copySuccess && (
+                                                            <span className="absolute -top-8 right-0 bg-green-600 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
+                                                                Copied!
+                                                            </span>
+                                                        )}
+                                                    </div>
 
-                                                            <div className="flex justify-between text-base text-[#0F172B] mb-2">
-                                                                <span>{item.name}</span>
-                                                                <span>{item.score}</span>
+                                                </div>
+                                            )}
+                                            {selectedCard === 3 && (
+                                                <div>
+                                                    <div className="w-full h-5 flex rounded-full overflow-hidden mb-4">
+                                                        <div className="bg-[#1CA34E] w-[35%]"></div>
+                                                        <div className="bg-[#D39D00] w-[25%]"></div>
+                                                        <div className="bg-[#D12A2A] w-[20%]"></div>
+                                                        <div className="bg-[#777B8B] w-[20%]"></div>
+                                                    </div>
+
+                                                    <div className="flex items-center justify-between gap-8 mb-6">
+                                                        <div className="flex items-center justify-between gap-8">
+                                                            <div className="flex items-center text-sm font-normal text-[#5F5F69] gap-2">
+                                                                <span className="w-3 h-3 bg-[#1CA34E]  rounded-sm"></span>
+                                                                Optimal
                                                             </div>
-
-                                                            <div className="h-3 flex rounded-full overflow-hidden">
-                                                                <div className="bg-[#1CA34E] w-[55%]"></div>
-                                                                <div className="bg-[#D39D00] w-[15%]"></div>
-                                                                <div className="bg-[#D12A2A] w-[15%]"></div>
-                                                                <div className="bg-[#777B8B] w-[15%]"></div>
-                                                            </div>
+                                                            <span className="text-base text-[#1E1E23] font-medium">18</span>
                                                         </div>
-                                                    ))}
+                                                        <div className="flex items-center justify-between gap-8">
+                                                            <div className="flex items-center text-sm font-normal text-[#5F5F69] gap-2">
+                                                                <span className="w-3 h-3 bg-[#D39D00] rounded-sm"></span>
+                                                                Normal
+                                                            </div>
+                                                            <span className="text-base text-[#1E1E23] font-medium">12</span>
+                                                        </div>
+                                                        <div className="flex items-center justify-between gap-8">
+                                                            <div className="flex items-center text-sm font-normal text-[#5F5F69] gap-2">
+                                                                <span className="w-3 h-3 bg-[#D12A2A] rounded-sm"></span>
+                                                                Out of Range
+                                                            </div>
+                                                            <span className="text-base text-[#1E1E23] font-medium">5</span>
+                                                        </div>
+                                                        <div className="flex items-center justify-between gap-8">
+                                                            <div className="flex items-center text-sm font-normal text-[#5F5F69] gap-2">
+                                                                <span className="w-3 h-3 bg-[#777B8B] rounded-sm"></span>
+                                                                Missing
+                                                            </div>
+                                                            <span className="text-base text-[#1E1E23] font-medium">3</span>
+                                                        </div>
+                                                    </div>
 
+                                                    <hr className="border-b border-[#E3E3E3] mb-5" />
+
+                                                    <h3 className="text-sm font-semibold text-[#1E1E23] mb-4">
+                                                        Category Overview
+                                                    </h3>
+
+                                                    <div className="grid grid-cols-2 gap-5">
+
+                                                        {[
+                                                            { name: "Heart", score: "0/10" },
+                                                            { name: "Blood Health", score: "5/10" },
+                                                            { name: "Kidney Health", score: "0/8" },
+                                                            { name: "Hormonal Health", score: "0/10" },
+                                                            { name: "Metabolic Health", score: "0/5" },
+                                                            { name: "Nutrients", score: "0/6" },
+                                                            { name: "Inflammation", score: "1/5" },
+                                                            { name: "Liver Health", score: "0/9" },
+                                                            { name: "Cancer Screening", score: "0/2" },
+                                                        ].map((item, i) => (
+
+                                                            <div key={i}>
+
+                                                                <div className="flex justify-between text-base text-[#0F172B] mb-2">
+                                                                    <span>{item.name}</span>
+                                                                    <span>{item.score}</span>
+                                                                </div>
+
+                                                                <div className="h-3 flex rounded-full overflow-hidden">
+                                                                    <div className="bg-[#1CA34E] w-[55%]"></div>
+                                                                    <div className="bg-[#D39D00] w-[15%]"></div>
+                                                                    <div className="bg-[#D12A2A] w-[15%]"></div>
+                                                                    <div className="bg-[#777B8B] w-[15%]"></div>
+                                                                </div>
+                                                            </div>
+                                                        ))}
+
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        )}
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -572,7 +575,7 @@ export default function DashboardView() {
                             {NOTES.map(item =>
                                 <div key={item.id}>
                                     <h4 className="text-lg text-black font-normal font-serif mb-2">{item.title}</h4>
-                                    <p className="text-[rgba(95,95,105,0.8)] font-normal leading-6 text-base">{item.description}</p>
+                                    <p className="text-gray-600 font-normal leading-6 text-base">{item.description}</p>
                                 </div>
                             )}
                             <div>
@@ -675,7 +678,7 @@ export default function DashboardView() {
                             <div onClick={() => setSelectedAction(item.id)} className="p-3 rounded-lg bg-white border border-[#E9EAEB] cursor-pointer hover:shadow-lg transition" key={item.id}>
                                 <div className="pb-2.5 border-b border-[#E9EAEB] flex items-start md:items-center justify-between">
                                     <h4 className="text-lg font-normal text-[#0F172B] font-serif">{item.title}</h4>
-                                    <span className="px-2.5 py-0.5 bg-[#ADB37D] rounded-full text-xs font-semibold text-white">{item.span}</span>
+                                    <span className="px-2.5 py-0.5 bg-[#ADB37D] rounded-full text-xs font-semibold text-[#FFF]">{item.span}</span>
                                 </div>
                                 <p className="text-sm font-normal text-[#5F5F69] mt-2.5">{item.description}</p>
                             </div>
@@ -737,6 +740,7 @@ export default function DashboardView() {
                                 const cardW = el.querySelector('div')?.offsetWidth ?? el.offsetWidth;
                                 el.scrollBy({ left: -cardW, behavior: "smooth" });
                             }}
+                            aria-label="Previous"
                             className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white border border-[#E9EAEB] rounded-full w-9 h-9 flex items-center justify-center shadow cursor-pointer hover:bg-[#F5F5F5] transition"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#4F512D"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
@@ -763,6 +767,7 @@ export default function DashboardView() {
                                 const cardW = el.querySelector('div')?.offsetWidth ?? el.offsetWidth;
                                 el.scrollBy({ left: cardW, behavior: "smooth" });
                             }}
+                            aria-label="Next"
                             className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white border border-[#E9EAEB] rounded-full w-9 h-9 flex items-center justify-center shadow cursor-pointer hover:bg-[#F5F5F5] transition"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#4F512D"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>

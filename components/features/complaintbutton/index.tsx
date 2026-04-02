@@ -22,14 +22,14 @@ export default function ComplaintButtonView() {
     };
 
     return (
-        <section className="p-6">
+        <section className="px-0 md:px-6 py-6">
             <div className="container">
                 <div className="mb-6">
                     <div className="flex items-center gap-2.5 mb-1">
-                        <Link href="/enterprise" className="text-[#535862] -ml-9 hover:text-[#181D27]">
+                        <Link href="/enterprise" className="text-[#535862] ml-0 md:-ml-9 hover:text-[#181D27]">
                             <BackArrowIcon />
                         </Link>
-                        <h1 className="font-serif font-normal text-4xl text-[#181D27]"> Anonymous complaints</h1>
+                        <h1 className="font-serif font-normal text-2xl md:text-4xl text-[#181D27]">Anonymous complaints</h1>
                     </div>
                     <p className="text-sm text-[#535862] font-normal mb-6">Offer a trusted space where employees can share concerns securely and without retaliation. </p>
 
