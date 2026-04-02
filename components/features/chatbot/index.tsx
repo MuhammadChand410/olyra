@@ -248,8 +248,8 @@ export default function ChatbotView() {
                                             </svg>
                                         </button>
                                         {menuOpenId === chat.id && (
-                                            <div className="fixed inset-0 flex items-center bg-black/50 z-50">
-                                                <div className=" relative left-90 md:left-74 bg-white border border-[#E9EAEB] rounded-xl shadow-lg z-50 w-44 p-1.5 ">
+                                            <div className="fixed inset-0 justify-center flex items-center bg-black/50 z-50">
+                                                <div className="bg-white border border-[#E9EAEB] rounded-xl shadow-lg z-50 w-44 p-1.5 ">
                                                     <button
                                                         onClick={(e) => { e.stopPropagation(); setEditingId(chat.id); setEditingName(chat.name); setMenuOpenId(null); }}
                                                         className="flex cursor-pointer items-center gap-2 w-full px-3 py-2 text-sm text-[#717680] hover:bg-gray-50"

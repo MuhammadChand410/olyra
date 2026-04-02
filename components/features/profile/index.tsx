@@ -61,7 +61,7 @@ export default function ProfileView() {
 
                 <div className="bg-white rounded-xl border border-[#E9EAEB] p-4 mb-4">
                     <div className="flex items-start justify-between mb-6">
-                        <div className="flex items-center gap-4">
+                        <div className="flex md:flex-row flex-col items-start md:items-center gap-4">
                             <img src={avatar.src} alt="avatar" width={56} height={56} className="rounded-full" />
                             <div>
                                 <h2 className="text-xl font-semibold text-[#181D27]">{profile.name}</h2>
@@ -140,12 +140,12 @@ export default function ProfileView() {
                     </div>
                 )}
 
-                <div className="bg-white rounded-xl border border-[#E9EAEB] p-4 mb-4 flex md:flex-row flex-col items-center justify-between">
-                    <div className="flex md:flex-row flex-col items-center gap-3">
+                <div className="bg-white rounded-xl border border-[#E9EAEB] p-4 mb-4 flex items-start gap-3 md:items-center justify-between">
+                    <div className="flex md:flex-row flex-col items-start md:items-center gap-3">
                         <div className="p-2 rounded-full bg-[#E5E7D4] flex items-center justify-center flex-shrink-0">
                             <HealthhIcon />
                         </div>
-                        <div>
+                        <div className="">
                             <h3 className="text-xl font-semibold text-[#181D27] mb-0.5">My Health Profile</h3>
                             <p className="text-sm font-normal text-[#414651]">Chronic illnesses, medications, allergies, family history</p>
                         </div>
@@ -207,8 +207,8 @@ export default function ProfileView() {
                     </div>
                 )}
 
-                <div className="bg-white rounded-xl border border-[#E9EAEB] p-4 mb-4 flex md:flex-row flex-col items-center justify-between">
-                    <div className="flex md:flex-row flex-col items-center gap-3">
+                <div className="bg-white rounded-xl border border-[#E9EAEB] p-4 mb-4 flex gap-3 items-start md:items-center justify-between">
+                    <div className="flex md:flex-row flex-col items-start md:items-center gap-3">
                         <div className="p-2 rounded-full bg-[#E5E7D4] flex items-center justify-center flex-shrink-0">
                             <UploaddIcon />
                         </div>
@@ -217,7 +217,7 @@ export default function ProfileView() {
                             <p className="text-sm font-normal text-[#414651]">Manage your uploaded PDF files and view the extracted lab values</p>
                         </div>
                     </div>
-                    <Link href="/uploads" className="flex items-center gap-2 px-2 hover:bg-orange-50 font-medium py-2 text-sm border cursor-pointer border-[#BE735B] text-[#BE735B] rounded-md transition">
+                    <Link href="/uploads" className="flex max-w-24 w-full md:max-w-23 items-center gap-2 px-2 hover:bg-orange-50 font-medium py-2 text-sm border cursor-pointer border-[#BE735B] text-[#BE735B] rounded-md transition">
                         View All
                         <RightIcon />
                     </Link>
@@ -260,15 +260,15 @@ export default function ProfileView() {
 
                 <div className="bg-white rounded-xl border border-[#E9EAEB] p-4 mb-4">
                     <h3 className="text-xl font-semibold text-[#181D27] mb-4">About Olyra</h3>
-                    <div className="flex items-center justify-end gap-2.5">
-                        <button onClick={() => setPrivacy(true)} className="cursor-pointer bg-[#F5F5F5] flex w-115 items-center justify-between px-2 py-3 border border-[#E9EAEB] rounded-md hover:bg-gray-100 transition">
+                    <div className="flex md:flex-row flex-col items-end md:items-center justify-end gap-2.5">
+                        <button onClick={() => setPrivacy(true)} className="cursor-pointer bg-[#F5F5F5] flex max-w-180 md:max-w-115 w-full items-center justify-between px-2 py-3 border border-[#E9EAEB] rounded-md hover:bg-gray-100 transition">
                             <div className="flex items-center gap-2 font-medium text-sm text-[#181D27]">
                                 <InfoIcon />
                                 Privacy Notes
                             </div>
                             <InfoArrowIcon />
                         </button>
-                        <button onClick={() => setTerms(true)} className="bg-[#F5F5F5] cursor-pointer flex w-115 items-center justify-between px-2 py-3 border border-[#E9EAEB] rounded-md hover:bg-gray-100 transition">
+                        <button onClick={() => setTerms(true)} className="bg-[#F5F5F5] cursor-pointer flex max-w-200 md:max-w-115 w-full items-center justify-between px-2 py-3 border border-[#E9EAEB] rounded-md hover:bg-gray-100 transition">
                             <div className="flex items-center gap-2 text-sm font-medium text-[#181D27]">
                                 <InfoIcon />
                                 Terms of services
@@ -328,7 +328,7 @@ export default function ProfileView() {
                 )}
 
                 {logout && (
-                    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50" onClick={() => setLogout(false)}>
+                    <div className="fixed inset-0 bg-black/50 flex items-center px-4 justify-center z-50" onClick={() => setLogout(false)}>
                         <div className="bg-white rounded-lg border border-[#E4E4E7] p-6 w-full max-w-130" onClick={(e) => e.stopPropagation()}>
                             <h2 className="text-lg font-serif font-normal text-[#18181B] mb-2">Logout</h2>
                             <p className="text-sm text-[#71717A] mb-4">Are you sure want to logout?</p>

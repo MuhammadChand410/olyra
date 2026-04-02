@@ -227,8 +227,8 @@ export default function QuestionView() {
                     <p className="text-sm text-[#535862] mb-6">View different questionnaires about health.</p>
                 </div>
                 <div className="p-4 bg-[#F5F5F5] rounded-xl border border-[#E9EAEB] mb-6">
-                    <div className="bg-white rounded-xl border border-[#E9EAEB] p-4 mb-4 flex items-center justify-between">
-                        <div className="flex items-center gap-3">
+                    <div className="bg-white rounded-xl border border-[#E9EAEB] p-4 mb-4 flex items-start md:items-center justify-between">
+                        <div className="flex md:flex-row flex-col items-start md:items-center gap-3">
                             <div className="p-2 rounded-full bg-[#E5E7D4] flex items-center justify-center flex-shrink-0">
                                 <HealthhIcon />
                             </div>
@@ -244,7 +244,7 @@ export default function QuestionView() {
                     </div>
 
                     <div className="bg-white rounded-xl border border-[#E9EAEB] p-4 flex items-center justify-between">
-                        <div className="flex items-center gap-3">
+                        <div className="flex md:flex-row flex-col items-start md:items-center gap-3">
                             <div className="p-2 rounded-full bg-[#E5E7D4] flex items-center justify-center flex-shrink-0">
                                 <VaccinesIcon />
                             </div>

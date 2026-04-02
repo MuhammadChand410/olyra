@@ -71,7 +71,7 @@ export default function ButtonView() {
                     <div className="h-3 bg-[#1CA34E] rounded-full transition-all" style={{ width: `${progress}%` }} />
                 </div>
 
-                <div className="bg-white rounded-xl border border-[#E9EAEB] p-6">
+                <div className="bg-white rounded-xl border border-[#E9EAEB] mb-6 p-6">
 
                     <div className="flex items-center justify-between mb-6">
                         <span className="text-xs font-semibold text-[#535862] uppercase tracking-wide">Lifestyle Questionnaire</span>

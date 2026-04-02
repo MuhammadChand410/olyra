@@ -402,7 +402,7 @@ export default function DashboardView() {
 
                         {selectedCard && (
                             <div className="fixed inset-0 bg-black/50 flex items-center px-4 justify-center z-50" onClick={() => setSelectedCard(null)}>
-                                <div className="bg-white rounded-lg border border-[#E4E4E7] p-6 max-w-187 w-full" onClick={(e) => e.stopPropagation()}>
+                                <div className="bg-white rounded-lg border border-[#E4E4E7] p-6 md:max-h-[100vh] max-h-[50vh] overflow-y-auto max-w-187 w-full" onClick={(e) => e.stopPropagation()}>
                                     <div className="flex items-start justify-between mb-4">
                                         <div>
                                             <h2 className="text-xl text-[#1E1E23] font-normal font-serif mb-1.5">{selectedCard === 1 ? 'Health Score' : selectedCard === 2 ? 'Biological Age' : 'Health Snapshot'}</h2>
@@ -673,7 +673,7 @@ export default function DashboardView() {
                     <div className="grid gap-4">
                         {ACTION_PLAN.map(item =>
                             <div onClick={() => setSelectedAction(item.id)} className="p-3 rounded-lg bg-white border border-[#E9EAEB] cursor-pointer hover:shadow-lg transition" key={item.id}>
-                                <div className="pb-2.5 border-b border-[#E9EAEB] flex items-center justify-between">
+                                <div className="pb-2.5 border-b border-[#E9EAEB] flex items-start md:items-center justify-between">
                                     <h4 className="text-lg font-normal text-[#0F172B] font-serif">{item.title}</h4>
                                     <span className="px-2.5 py-0.5 bg-[#ADB37D] rounded-full text-xs font-semibold text-white">{item.span}</span>
                                 </div>
@@ -685,17 +685,17 @@ export default function DashboardView() {
 
                 {selectedAction && (
                     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50" onClick={() => setSelectedAction(null)}>
-                        <div className="bg-white rounded-lg border border-[#E4E4E7] p-6 max-w-187 w-full mx-4" onClick={(e) => e.stopPropagation()}>
+                        <div className="bg-white rounded-lg border border-[#E4E4E7] max-w-187 max-h-[50vh] overflow-y-auto md:max-h-[90vh] w-full mx-4" onClick={(e) => e.stopPropagation()}>
                             {ACTION_PLAN.filter(item => item.id === selectedAction).map(item => (
                                 <div key={item.id}>
-                                    <div className="flex items-start justify-between mb-4">
-                                        <div className="flex items-center gap-6">
+                                    <div className="flex sticky p-6 top-0 bg-white items-start justify-between">
+                                        <div className="flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-6">
                                             <h2 className="text-xl text-[#1E1E23] font-normal font-serif">{item.title}</h2>
                                             <span className="px-2.5 py-0.5 bg-[#ADB37D] rounded-full text-xs font-semibold text-white">{item.span}</span>
                                         </div>
                                         <button onClick={() => setSelectedAction(null)} className="text-gray-500 hover:text-gray-700 text-2xl cursor-pointer">&times;</button>
                                     </div>
-                                    <div className="border-t border-[#E3E3E3] pt-4">
+                                    <div className="border-t p-6 border-[#E3E3E3] pt-4">
                                         <div className="mb-6">
                                             <h3 className="text-sm font-semibold text-[#1E1E23] mb-2">What it is?</h3>
                                             <p className="text-sm font-normal text-[#5F5F69] leading-6">{item.whatdescription}</p>
@@ -725,7 +725,7 @@ export default function DashboardView() {
                     </div>
                 </div>
 
-                <div className="bp-4 bg-[#F5F5F5] rounded-xl border border-[#E9EAEB] mb-6">
+                <div className="bp-4 p-4 bg-[#F5F5F5] rounded-xl border border-[#E9EAEB] mb-6">
                     <div className="mb-4">
                         <TitlePara title="Did You Know?" description="Additional clinical context related to your laboratory results." />
                     </div>
