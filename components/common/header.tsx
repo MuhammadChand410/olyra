@@ -6,6 +6,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { DashboardIcon, HealthIcon, ActionIcon, ChatbotIcon, ProfileIcon, EnterpriseIcon, QuestionnairesIcon } from "@/assets/icon";
 import Image from "next/image";
+import { useAuth } from "../context/AuthContext";
 
 const SIDEBAR_LINKS = [
     { id: 1, icon: DashboardIcon, text: 'Dashboard', path: '/' },
@@ -18,9 +19,10 @@ const SIDEBAR_LINKS = [
 ];
 
 export default function Header() {
+    const { logout, user } = useAuth();
+
     const [servicesOpen, setServicesOpen] = useState(false);
     const [profileOpen, setProfileOpen] = useState(false);
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const pathname = usePathname();
 
     return (
@@ -54,13 +56,19 @@ export default function Header() {
                                     <Link href="/profile" className="block px-4 py-2 hover:bg-gray-100">My Profile</Link>
                                     <Link href="/settings" className="block px-4 py-2 hover:bg-gray-100">Settings</Link>
                                     <hr className="my-2" />
-                                    <button className="block w-full text-left px-4 py-2 hover:bg-gray-100 text-red-600">Logout</button>
+                                    <button className="block w-full text-left px-4 py-2 hover:bg-gray-100 text-red-600" onClick={logout}>Logout</button>
                                 </div>
                             )}
                         </li>
                         <button aria-label="User profile" className="cursor-pointer">
                             <img src={avatar.src} alt="avatar" width={40} height={40} className="rounded-full" />
                         </button>
+                        <div className="text-left hidden md:grid">
+                            <span className="text-[#17181A] text-lg font-semibold">
+                                {user?.name || user?.email || ''}
+                            </span>
+                            <p className="text-base text-[#4A6572] font-semibold">{user?.role || ''}</p>
+                        </div>
                     </ul>
                 </nav>
             </div>

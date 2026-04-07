@@ -298,7 +298,7 @@ export default function DashboardView() {
                                 <h1 className="font-serif font-normal text-4xl text-[#181D27] mb-1">Welcome, Diego</h1>
                                 <p className="text-sm font-manrope font-normal text-[#535862]">Your health. Your data. Your life.</p>
                             </div>
-                            <Button icon={<UploadIcon />} onClick={() => fileInputRef.current?.click()} className="bg-[#BE735B] md:w-fit w-full justify-center hover:bg-[#A86550] px-4 py-2.5" text="Upload Lab Results" />
+                            <Button icon={<UploadIcon />} onClick={() => fileInputRef.current?.click()} className="bg-[#BE735B] cursor-pointer md:w-fit w-full justify-center hover:bg-[#A86550] px-4 py-2.5" text="Upload Lab Results" />
                             <input ref={fileInputRef} type="file" accept=".pdf,.jpg,.jpeg,.png" className="hidden" onChange={handleUpload} />
                             {uploadSuccess && uploadedFile && (
                                 <div className="fixed top-4 right-4 z-50 bg-green-600 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-2">
@@ -554,7 +554,7 @@ export default function DashboardView() {
                     <div className="p-4 bg-[#F5F5F5] rounded-xl border border-[#E9EAEB] mb-6">
                         <div className="flex md:flex-row flex-col items-start md:items-center justify-between gap-4 md:gap-6 mb-4">
                             <TitlePara title="Key Biomarkers" description="Individual laboratory values with clinical reference ranges and recent trends." />
-                            <Button text="View More" className="bg-[#BE735B] hover:bg-[#A86550] px-3 py-2.5" icon={<ArrowIcon />} />
+                            <Button path="/question" text="View More" className="bg-[#BE735B] hover:bg-[#A86550] px-3 py-2.5" icon={<ArrowIcon />} />
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                             {filtered.map(card => (
@@ -589,7 +589,7 @@ export default function DashboardView() {
                     <div className="p-4 bg-[#F5F5F5] rounded-xl border border-[#E9EAEB] mb-6">
                         <div className="flex md:flex-row flex-col items-start md:items-center justify-between gap-4 md:gap-6 mb-4">
                             <TitlePara title="Functional Markers" description="Recent functional health measurements." />
-                            <Button text="View More" className="bg-[#BE735B] hover:bg-[#A86550] px-3 py-2.5" icon={<ArrowIcon />} />
+                            <Button path="/health" text="View More" className="bg-[#BE735B] hover:bg-[#A86550] px-3 py-2.5" icon={<ArrowIcon />} />
                         </div>
                         <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
                             {FUNCATIONAL_MARKER.map(item =>
@@ -671,7 +671,7 @@ export default function DashboardView() {
                 <div className="p-4 bg-[#F5F5F5] rounded-xl border border-[#E9EAEB] mb-6">
                     <div className="flex md:flex-row flex-col items-start md:items-center justify-between gap-4 md:gap-6 mb-4">
                         <TitlePara title="Action Plan" description="Evidence-based recommendations derived from your biomarker results and health profile." />
-                        <Button text="View More" className="bg-[#BE735B] hover:bg-[#A86550] px-3 py-2.5" icon={<ArrowIcon />} />
+                        <Button path="/action" text="View More" className="bg-[#BE735B] hover:bg-[#A86550] px-3 py-2.5" icon={<ArrowIcon />} />
                     </div>
                     <div className="grid gap-4">
                         {ACTION_PLAN.map(item =>
@@ -722,8 +722,8 @@ export default function DashboardView() {
                     <div className="flex md:flex-row flex-col items-start justify-between md:items-center gap-4">
                         <TitlePara title="Help Centre" description="Ask Questions, clear doubts or get guidance, with expert available 24/7" />
                         <div className="flex md:flex-row flex-col md:w-fit w-full items-start md:items-center gap-4">
-                            <Button text="Chat with a specialist" className="bg-[#BE735B] md:w-fit w-full justify-center hover:bg-[#A86550] px-4 py-2.5" icon={<WhattsappIcon />} onClick={() => window.open('https://wa.me/+1234567890?text=Hello%2C%20I%20need%20help%20with%20my%20health%20data', '_blank')} />
-                            <Button text="Chat with Olyra Intelligence" className="bg-[#4F512D] md:w-fit w-full justify-center hover:bg-[#3F4125] px-4 py-2.5" icon={<ChatIcon />} onClick={() => window.location.href = '/chatbot'} />
+                            <Button text="Chat with a specialist" className="bg-[#BE735B] cursor-pointer md:w-fit w-full justify-center hover:bg-[#A86550] px-4 py-2.5" icon={<WhattsappIcon />} onClick={() => window.open('https://wa.me/+1234567890?text=Hello%2C%20I%20need%20help%20with%20my%20health%20data', '_blank')} />
+                            <Button text="Chat with Olyra Intelligence" className="bg-[#4F512D] cursor-pointer md:w-fit w-full justify-center hover:bg-[#3F4125] px-4 py-2.5" icon={<ChatIcon />} onClick={() => window.location.href = '/chatbot'} />
                         </div>
                     </div>
                 </div>
